@@ -1,0 +1,4 @@
+#
+#job_details->jobs
+#user_jobs(created_at, id)->jobs(created_at, id)
+#
