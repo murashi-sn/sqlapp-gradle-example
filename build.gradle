@@ -7,8 +7,6 @@ import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.Optional
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: "jacoco"
 
 group = 'com.sqlapp'
 archivesBaseName = 'sample-db'
@@ -78,28 +76,6 @@ def changeLogTableName="changelog"
 def exportDataTargetTables=[] as String[]
 def exportXmlWithRowDumpTables=[] as String[]
 def font="${font}"
-
-eclipse {
-
-	classpath {
-//		file {
-//			whenMerged { classpath ->
-//			  classpath.entries.findAll { entry -> entry.kind == 'output' }*.path = 'classes'
-//			}
-//		}
-
-		defaultOutputDir = file('/target/classes')
-
-		file {
-			whenMerged { cp ->
-				cp.entries.findAll {it.path.startsWith("src/test/") }*.output = "/target/test-classes"
-			}
-		}
-
-		downloadSources = true
-		downloadJavadoc = true
-	}
-}
 
 // add Repository
 repositories {
