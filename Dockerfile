@@ -1,5 +1,4 @@
-from gradle:4.5.1-jdk8-alpine
-MAINTAINER Tatsuo satoh "multisqllib@gmail.com"
+from gradle:7.4.1-jdk11-alpine
 
 RUN apk add --update --no-cache \
            graphviz \
