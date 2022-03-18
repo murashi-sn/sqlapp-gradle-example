@@ -140,10 +140,11 @@ task deploy {
 exportXml {
 	debug=true
 	dataSource {
-		driverClassName=jdbc.connection.driverClassName
-		url=jdbc.connection.url
-		username=jdbc.connection.username
-		password=jdbc.connection.password
+//		driverClassName=jdbc.connection.driverClassName
+//		url=jdbc.connection.url
+//		username=jdbc.connection.username
+//		password=jdbc.connection.password
+		properties "${jdbcConfigPath}"
 	}
 //	target="catalog" or "schema" or "tables" or...
 	target="${schema_level}"
@@ -158,10 +159,7 @@ exportXml {
 dropObjects {
 	debug=true
 	dataSource {
-		driverClassName=jdbc.connection.driverClassName
-		url=jdbc.connection.url
-		username=jdbc.connection.username
-		password=jdbc.connection.password
+		properties "${jdbcConfigPath}"
 	}
 	includeSchemas targetSchemas
 //	preDropTableSql="SET SESSION FOREIGN_KEY_CHECKS=0"
@@ -174,10 +172,7 @@ dropObjects {
 countAllTables {
 	debug=true
 	dataSource {
-		driverClassName=jdbc.connection.driverClassName
-		url=jdbc.connection.url
-		username=jdbc.connection.username
-		password=jdbc.connection.password
+		properties "${jdbcConfigPath}"
 	}
 	includeSchemas targetSchemas
 	outputFormatType="TABLE"
@@ -187,10 +182,7 @@ countAllTables {
 versionUp {
 	debug=true
 	dataSource {
-		driverClassName=jdbc.connection.driverClassName
-		url=jdbc.connection.url
-		username=jdbc.connection.username
-		password=jdbc.connection.password
+		properties "${jdbcConfigPath}"
 	}
 	parameters=['schemaNameSuffix':"${schemaNameSuffix}"]
 	sqlDirectory=file("src/main/sql")
@@ -236,10 +228,7 @@ versionDown {
 importData {
 	debug=true
 	dataSource {
-		driverClassName=jdbc.connection.driverClassName
-		url=jdbc.connection.url
-		username=jdbc.connection.username
-		password=jdbc.connection.password
+		properties "${jdbcConfigPath}"
 	}
 	parameters=[:]
 	useSchemaNameDirectory=false
@@ -266,10 +255,7 @@ importData {
 exportData {
 	debug=true
 	dataSource {
-		driverClassName=jdbc.connection.driverClassName
-		url=jdbc.connection.url
-		username=jdbc.connection.username
-		password=jdbc.connection.password
+		properties "${jdbcConfigPath}"
 	}
 	parameters=[:]
 	useSchemaNameDirectory=false
@@ -439,10 +425,7 @@ generateHtml{
 task('showConnections', type: com.sqlapp.gradle.plugins.SqlQueryTask) {
 	debug=false
 	dataSource {
-		driverClassName=jdbc.connection.driverClassName
-		url=jdbc.connection.url
-		username=jdbc.connection.username
-		password=jdbc.connection.password
+		properties "${jdbcConfigPath}"
 	}
 	sql="show processlist"
 	outputFormatType="TABLE"
@@ -452,10 +435,7 @@ task('showConnections', type: com.sqlapp.gradle.plugins.SqlQueryTask) {
 task('showErrors', type: com.sqlapp.gradle.plugins.SqlQueryTask) {
 	debug=false
 	dataSource {
-		driverClassName=jdbc.connection.driverClassName
-		url=jdbc.connection.url
-		username=jdbc.connection.username
-		password=jdbc.connection.password
+		properties "${jdbcConfigPath}"
 	}
 	sql="SHOW ERRORS"
 	outputFormatType="TABLE"
@@ -465,10 +445,7 @@ task('showErrors', type: com.sqlapp.gradle.plugins.SqlQueryTask) {
 task('showWarnings', type: com.sqlapp.gradle.plugins.SqlQueryTask) {
 	debug=false
 	dataSource {
-		driverClassName=jdbc.connection.driverClassName
-		url=jdbc.connection.url
-		username=jdbc.connection.username
-		password=jdbc.connection.password
+		properties "${jdbcConfigPath}"
 	}
 	sql="SHOW WARNINGS"
 	outputFormatType="TABLE"
