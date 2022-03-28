@@ -4,8 +4,11 @@ RUN apk add --update --no-cache \
            graphviz \
            ttf-freefont
 
-#CMD ["gradle","generateHtml"]
 RUN rm -f -R html
-RUN mkdir -f html
+RUN mkdir html
 RUN chmod -R 666 html
-RUN sudo gradle generateHtml
+#RUN sudo gradle generateHtml
+ENTRYPOINT ["gradle"]
+CMD ["generateHtml"]
+
+
