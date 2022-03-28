@@ -324,7 +324,10 @@ task mvXml {
 	doLast {
 		File schemaFile=file("schemas/base/${schema_level}.xml");
 		if (schemaFile.exists()) {
-			schemaFile.delete()
+			schemaFile.delete();
+		} else {
+			File parent=schemaFile.getParentFile();
+			parent.mkdirs();
 		}
 		file("schemas/${schema_level}.xml").renameTo(file("schemas/base/${schema_level}.xml"))
 	}
