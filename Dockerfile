@@ -1,5 +1,7 @@
 from gradle:7.4.1-jdk11-alpine
 
+RUN sed -i 's/https\:\/\//http:\/\//g' /etc/apk/repositories
+
 RUN apk add --update --no-cache \
            graphviz \
            ttf-freefont
