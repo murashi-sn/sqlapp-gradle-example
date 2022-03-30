@@ -9,6 +9,9 @@
 root/
 　├ gradle/
 　├ html/ <- DBのスキーマ情報のドキュメントの出力先
+　├ lib/ <- 依存関係のあるライブラリを入れておくためのディレクトリ
+　├ schemas/ <- DBのスキーマ格納用のディレクトリ
+　│　└ base/ <- DBのスキーマのベースとなるバージョンファイルの格納用のディレクトリ。この上位に格納されたファイルとDIFFをとることが出来る。
 　├ src/
 　│　└ main/
 　│　　　├ config/
@@ -18,17 +21,44 @@ root/
 　│　　　├ foreignkey/
 　│　　　│　  └ fkey.def <- 物理的なリレーションがないが、論理的なリレーションをER図に反映するための定義のファイル
 　│　　　└ sql/ <- 何かの処理を行うためのSQLを入れておくためのディレクトリ
-　├ lib/ <- 依存関係のあるライブラリを入れておくためのディレクトリ
 　├ build.gradle <- gradleの定義ファイル
-　├ generateXml.bat <- HTMLのドキュメント生成用のgradleタスクをDocker環境で行うためのコマンド(for Win)
-　├ generateXml.sh <- HTMLのドキュメント生成用のgradleタスクをDocker環境で行うためのコマンド(for Linux)
+　├ Dockerfile <- gradleのgenerateHtmlタスクが依存するgraphvizをDocker環境で実行するためのファイル
+　├ generateHtml.bat <- HTMLのドキュメント生成用のgradleタスクをDocker環境で行うためのコマンド(for Win)
+　├ generateHtml.sh <- HTMLのドキュメント生成用のgradleタスクをDocker環境で行うためのコマンド(for Linux)
 　├ gradle.properties <- gradleの設定ファイル
 　├ gradlew <- gradleラッパーファイル(for Linux)
 　└ gradlew.bat <- gradleの設定ファイル(for Win)
 ```
 
 ## gradleタスク
+### 基本タスク
+ - exportXml  
+   DBのスキーマ情報をXMLファイルとして出力するタスク。schemas/配下に出力される。
+ - mvXml  
+   exportXmlで出力したXMLファイルをschemas/base配下に移動するだけのタスク。
+ - generateHtml  
+   schemas/base配下のXMLからHTMLのドキュメントを生成するためのタスク。graphvizが必要なので実際はgenerateHtml.batを利用してDocker環境で実行する。
+ - updateDictionaries  
+   generateHtmlで生成されるHTMLのテーブル、インデックス、カラムなどの論理名を記載するExcelファイルを生成するためのタスク。DBに変更があった場合は、exportXml、mvXml実効後でこのタスクを実行するとExcelが更新される。
 
-copyLib
-cleanLib
-deploy
+### スキーマDIFF
+ - diffSchemaXml  
+ 　　schemas/とschemas/base配下のDBスキーマのXMLファイルのDIFFを出力する。
+
+### スキーマバージョン管理タスク
+ - versionUp
+ - versionDown
+ - versionRepair
+
+### DBデータImport、Export系
+ - importData
+ - exportData
+
+### その他
+ - copyLib
+ - cleanLib
+ - deploy
+ - generateSql
+ - toExcel
+ - toJson
+ - toCsv

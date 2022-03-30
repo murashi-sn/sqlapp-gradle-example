@@ -28,7 +28,7 @@ buildscript {
 }
 
 plugins {
-	id 'com.sqlapp.db' version '0.12.20'
+	id 'com.sqlapp.db' version '0.12.25'
 	id 'java'
 	id 'java-library'
 }
