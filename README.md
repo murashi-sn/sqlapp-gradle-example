@@ -4,6 +4,15 @@
   1. DBのスキーマ情報をXMLファイルとして出力する。
   1. スキーマ情報のXMLからER図を含めたドキュメントを生成する。
 
+## 類似のプロダクトとの比較
+- DBのスキーマ情報をHTMLとして出力するツールには[SchemaSpy](https://schemaspy.org/ "SchemaSpy")、[SchemaCrawler](https://www.schemacrawler.com/ "SchemaCrawler")などがありますが、Sqlappは以下の点でこれらのプロダクトよりも優れています。  
+
+
+
+| TH  |  Sqlapp | SchemaSpy | SchemaCrawler |
+| ---- | ---- | ---- | ---- |
+|  TD  |  セル内で<br>改行  |  セル内で<br>改行  |  セル内で<br>改行  |
+
 ## ディレクトリ構成
 ```
 root/
