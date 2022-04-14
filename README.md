@@ -6,14 +6,33 @@
 
 ## 類似のプロダクトとの比較
 - DBのスキーマ情報をHTMLとして出力するツールには[SchemaSpy](https://schemaspy.org/ "SchemaSpy")、[SchemaCrawler](https://www.schemacrawler.com/ "SchemaCrawler")などがありますが、Sqlappは以下の点でこれらのプロダクトよりも優れています。  
-
-
-
-| TH  |  Sqlapp | SchemaSpy | SchemaCrawler |
-| ---- | ---- | ---- | ---- |
-|  TD  |  セル内で<br>改行  |  セル内で<br>改行  |  セル内で<br>改行  |
-
+  
+| サポートするオブジェクト |  Sqlapp | SchemaSpy | SchemaCrawler |
+| ----  | ---- | ---- | ---- |
+|  Table   |  OK  |  OK  |  OK  |
+|  View   |  OK  |  OK  |  OK  |
+|  Relations   |  OK  |  OK  |  OK  |
+|  Index   |  OK  |  OK  |  OK  |
+|  Unique Constraints   |  OK  |  OK  |  OK  |
+|  Check Constraints   |  OK  |  -  |  -  |
+|  Exclude Constraints(Postgres) |  OK  |  -  |  -  |
+|  Partitioning   |  OK  |  -  |  -  |
+|  Sequence   |  OK  |  OK  |  OK  |
+|  Inherits(Postgres)   |  OK  |  -  |  -  |
+|  Procedure   |  OK  |  OK  |  OK  |
+|  Function   |  OK  |  OK  |  OK  |
+|  Event   |  OK  |  -  |  -  |
+|  Synonym   |  OK  |  -  |  OK  |
+|  Rule   |  OK  |  -  |  -  |
+|  Domain   |  OK  |  -  |  OK  |
+|  Type   |  OK  |  -  |  OK  |
+|  Trigger   |  OK  |  -  |  OK  |
+|  User   |  OK  |  -  |  -  |
+|  Role   |  OK  |  -  |  -  |
+|  Privilege   |  OK  |  -  |  -  |
+  
 ## ディレクトリ構成
+
 ```
 root/
 　├ gradle/
