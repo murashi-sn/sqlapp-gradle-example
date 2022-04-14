@@ -5,7 +5,7 @@
   1. スキーマ情報のXMLからER図を含めたドキュメントを生成する。
 
 ## 類似のプロダクトとの比較
-- DBのスキーマ情報をHTMLとして出力するツールには[SchemaSpy](https://schemaspy.org/ "SchemaSpy")、[SchemaCrawler](https://www.schemacrawler.com/ "SchemaCrawler")などがありますが、Sqlappは以下の点でこれらのプロダクトよりも優れています。  
+- DBのスキーマ情報をHTMLとして出力するツールには[SchemaSpy](https://schemaspy.org/ "SchemaSpy")、[SchemaCrawler](https://www.schemacrawler.com/ "SchemaCrawler")などがありますが、SqlappはサポートするDBの機能の点でこれらのプロダクトよりも優れています。  
   
 | サポートするオブジェクト |  Sqlapp | SchemaSpy | SchemaCrawler |
 | ----  | ---- | ---- | ---- |
@@ -13,6 +13,8 @@
 |  View   |  OK  |  OK  |  OK  |
 |  Relations   |  OK  |  OK  |  OK  |
 |  Index   |  OK  |  OK  |  OK  |
+|  Index(Include Column)   |  OK  |  -  |  -  |
+|  Index(Where)   |  OK  |  -  |  -  |
 |  Unique Constraints   |  OK  |  OK  |  OK  |
 |  Check Constraints   |  OK  |  -  |  -  |
 |  Exclude Constraints(Postgres) |  OK  |  -  |  -  |
