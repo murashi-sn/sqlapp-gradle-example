@@ -75,40 +75,9 @@ def exportDataTargetTables=[] as String[]
 def exportXmlWithRowDumpTables=[] as String[]
 def font="${font}"
 
-// add Repository
-repositories {
-	mavenLocal()
-	mavenCentral()
-}
-
 configurations {
 	all*.exclude group: "log4j", module: "log4j"
 	all*.exclude group: "org.projectlombok", module: "lombok"
-}
-
-// search dependencies by http://mvnrepository.com/
-dependencies {
-	File libFile=file('lib');
-	if (libFile.exists()&&libFile.list()!=null&&libFile.list().length>0) {
-		implementation fileTree(dir: 'extlib', include: '*.jar')
-		implementation fileTree(dir: 'lib', include: '*.jar')
-	} else {
-		implementation fileTree(dir: 'extlib', include: '*.jar')
-		implementation 'org.codehaus.janino:janino:2.7.8'
-		//DB
-		if ("${jdbc_driver}"!="") {
-			implementation "${jdbc_driver}"
-		}
-		implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
-		
-		//sqlapp
-		[
-			'sqlapp-core',
-			'sqlapp-command',
-			'sqlapp-gradle-plugin',
-			"sqlapp-core-${db}"
-		].each { name -> implementation "com.sqlapp:${name}:+" }
-	}
 }
 
 wrapper {
